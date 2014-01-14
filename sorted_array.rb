@@ -5,12 +5,18 @@ class SortedArray
     @internal_arr = input_arr
     # Fill in the rest of the initialize method here.
     # What should you do with each element of the incoming array?
+    first_larger_index(@internal_arr[0], start_ind=1, end_ind=@internal_arr.size)
+    #hmm... is this the right way?
+
   end
 
   def add(new_ele)
 
-    @internal_arr.insert(-1,@new_ele)
+    # @internal_arr.insert(-1,@new_ele)
     # Hint: Use the Array#insert method.
+    @internal_arr.insert(
+    first_larger_index(new_ele, start_ind=0, end_ind=@internal_arr.size), new_ele)
+    
   end
 
   def size
@@ -29,17 +35,23 @@ class SortedArray
 
 
   def first_larger_index(target, start_ind=0, end_ind=@internal_arr.size)
+    
+    mid_ind = (end_ind + start_ind)/2
 
     if @internal_arr.size == 0
+      return internal_arr.size
+    elsif target > @internal_arr[-1]
       return internal_arr.size
     elsif start_ind >= end_ind
       return end_ind
     else 
-      mid_ind = (end_ind + start_ind)/2 
-      if target > @internal_arr[mid_ind]
+      if target == @internal_arr[mid_ind] 
+        return mid_ind
+      elsif target > @internal_arr[mid_ind]
         return first_larger_index(target, mid_ind+1, end_ind)
       else target < @internal_arr[mid_ind]
         return first_larger_index(target, start_ind, mid_ind)
+
       end 
     end
 

@@ -61,12 +61,12 @@ describe SortedArray do
       @sorted_array.add(4)
       @sorted_array.size.should == @source.size + 1
     end
-    # it 'adds in the correct location' do
-    #   @sorted_array.add(1)
-    #   @sorted_array.add(10)
-    #   @sorted_array[-1].should == 10
-    #   @sorted_array[0].should == 1
-    # end
+    it 'adds in the correct location' do
+      @sorted_array.add(1)
+      @sorted_array.add(10)
+      @sorted_array[-1].should == 10
+      @sorted_array[0].should == 1
+    end
   end
 
   describe '#first_larger_index' do
@@ -112,30 +112,30 @@ describe SortedArray do
     end
   end
 
-  # describe '#index' do
-  #   before do
-  #     @source = ["Crisis","Balderdash","Masticate","Xanadu","Lemur"]
-  #     # ["Balderdash", "Crisis", "Lemur", "Masticate", "Xanadu"]
-  #     @sorted_array = SortedArray.new(@source)
-  #   end
-  #   it 'finds the middle item' do
-  #     @sorted_array.index("Lemur").should == 2
-  #   end
-  #   it 'finds an item in the left half' do
-  #     @sorted_array.index("Crisis").should == 1
-  #   end
-  #   it 'finds the last item' do
-  #     @sorted_array.index("Xanadu").should == 4
-  #   end
-  #   it 'returns nil for an item not in the array' do
-  #     @sorted_array.index("Boredom").should == nil
-  #   end
+  describe '#index' do
+    before do
+      @source = ["Crisis","Balderdash","Masticate","Xanadu","Lemur"]
+      # ["Balderdash", "Crisis", "Lemur", "Masticate", "Xanadu"]
+      @sorted_array = SortedArray.new(@source)
+    end
+    it 'finds the middle item' do
+      @sorted_array.index("Lemur").should == 2
+    end
+    it 'finds an item in the left half' do
+      @sorted_array.index("Crisis").should == 1
+    end
+    it 'finds the last item' do
+      @sorted_array.index("Xanadu").should == 4
+    end
+    it 'returns nil for an item not in the array' do
+      @sorted_array.index("Boredom").should == nil
+    end
 
-  #   it 'returns nil for an item not in the array' do
-  #     @sorted_array.index("Aaron").should == nil
-  #   end
-  #   it 'returns nil for an item greater than anything in the array' do
-  #     @sorted_array.index("Zebra").should == nil
-  #   end
-  # end
+    it 'returns nil for an item not in the array' do
+      @sorted_array.index("Aaron").should == nil
+    end
+    it 'returns nil for an item greater than anything in the array' do
+      @sorted_array.index("Zebra").should == nil
+    end
+  end
 end
